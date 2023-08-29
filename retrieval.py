@@ -39,17 +39,11 @@ def run_llm(query: str, chat_history: List[Dict[str, Any]], node: str) -> Any:
         template=prompt_template, input_variables=["context", "question"]
     )
 
-    custom_template = """Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question. At the end of standalone question add this 'Answer is as much details as possible' If you do not know the answer reply with 'I am sorry'.
-    Chat History:
-    {chat_history}
-    Follow Up Input: {question}
-    Standalone question:"""
-
-    CUSTOM_QUESTION_PROMPT = PromptTemplate.from_template(custom_template)
-
     qa = ConversationalRetrievalChain.from_llm(
         llm=model,
-        retriever=docsearch.as_retriever(search_type="similarity", search_kwargs={"k":5}),
+        retriever=docsearch.as_retriever(
+            search_type="similarity", search_kwargs={"k": 5}
+        ),
         combine_docs_chain_kwargs={"prompt": QA_PROMPT},
         return_source_documents=True,
         verbose=True,
@@ -63,12 +57,18 @@ def run_llm(query: str, chat_history: List[Dict[str, Any]], node: str) -> Any:
     return qa({"question": query, "chat_history": ""})
 
 
-
 if __name__ == "__main__":
     print(run_llm("What is a retrievalQA chain ?"))
 
+    # custom_template = """Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question. At the end of standalone question add this 'Answer is as much details as possible' If you do not know the answer reply with 'I am sorry'.
+    # Chat History:
+    # {chat_history}
+    # Follow Up Input: {question}
+    # Standalone question:"""
 
-    #search_type="similarity", search_kwargs={"k":1}
+    # CUSTOM_QUESTION_PROMPT = PromptTemplate.from_template(custom_template)
+
+    # search_type="similarity", search_kwargs={"k":1}
     # qa = ConversationalRetrievalChain.from_llm(
     #     llm=model,
     #     retriever=docsearch.as_retriever(search_type="similarity", search_kwargs={"k":5}),
