@@ -1,8 +1,8 @@
-# AiWaldoh's Documentation Chatbot
+# AiWaldoh's ReadTheDocs Chatbot
 
 ## Overview
 
-This project creates a Q&A chatbot interface to help you query website documentation. It automates the task of scraping website documentation, storing it in a Pinecone database, and then retrieves it via a Streamlit-based Q&A chatbot UI.
+This project creates a Q&A chatbot interface to help you query website documentation that use ReadTheDocs. It automates the task of scraping website documentation that use ReadTheDocs, storing it in a Pinecone database, and then retrieves it via a Streamlit-based Q&A chatbot UI.
 
 ## Features
 
