@@ -1,3 +1,25 @@
+# AiWaldoh's Documentation Chatbot
+
+## Overview
+
+This project creates a Q&A chatbot interface to help you query website documentation. It automates the task of scraping website documentation, storing it in a Pinecone database, and then retrieves it via a Streamlit-based Q&A chatbot UI.
+
+## Features
+
+- **Web Scraping**: Scrapes website documentation using BeautifulSoup and Selenium.
+- **Data Embedding**: Embeds the documentation data for efficient querying.
+- **Pinecone Database**: Stores the embedded documentation in a Pinecone database.
+- **Streamlit UI**: An interactive Streamlit UI for querying documentation.
+- **Dynamic Documentation Selection**: Choose the docs you want to interact with from the left-hand navigation pane.
+
+## Tech Stack
+
+- Pinecone
+- Streamlit
+- Python
+- BeautifulSoup
+- Selenium
+- Langchain's ReadTheDocsLoader
 ## Components
 
 ### `scraper.py`
